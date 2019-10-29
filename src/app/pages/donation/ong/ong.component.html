@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<div class="donations">
+  <div class="container">
+
+    <ul class="stepper">
+      <li class="stepper_item stepper_item--active">
+        <span class="stepper_item-circle"></span>
+      </li>
+      <li class="stepper_item">
+        <span class="stepper_item-circle"></span>
+      </li>
+      <li class="stepper_item">
+        <span class="stepper_item-circle"></span>
+      </li>
+    </ul>
+
+    <h1 class="default-title">Escolha a ONG que deseja apoiar</h1>
+
+    <ul class="donations_ongs">
+
+      <li class="donations_ongs-item" [ngClass]="status ? 'donations_ongs-item--select' : ''">
+        <img src="https://fakeimg.pl/142/" alt="" class="donations_ongs-image">
+        <div class="donations_ongs-content">
+          <p class="donations_ongs-name">Nome da ONG</p>
+          <p class="donations_ongs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+            qui officia deserunt mollit anim id est laborum.</p>
+          <ul class="donations_ongs-buttons">
+            <li class="donations_ongs-button">
+              <button class="button button_sm button_white" (click)="initLoginModal()">Saiba mais</button>
+            </li>
+            <li class="donations_ongs-button">
+              <button class="button button_brand" (click)="selectOng()">Selecionar</button>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="donations_ongs-item">
+        <img src="https://fakeimg.pl/142/" alt="" class="donations_ongs-image">
+        <div class="donations_ongs-content">
+          <p class="donations_ongs-name">Nome da ONG</p>
+          <p class="donations_ongs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+            qui officia deserunt mollit anim id est laborum.</p>
+          <ul class="donations_ongs-buttons">
+            <li class="donations_ongs-button">
+              <button class="button button_sm button_white" (click)="initLoginModal()">Saiba mais</button>
+            </li>
+            <li class="donations_ongs-button">
+              <button class="button button_brand">Selecionar</button>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+
+    <button class="button button_brand">
+      Prosseguir
+    </button>
+
+  </div>
+</div>
+
+<app-footer></app-footer>

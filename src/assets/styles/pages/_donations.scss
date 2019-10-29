@@ -1,0 +1,353 @@
+.donations {
+  padding: 80px 0;
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+.stepper {
+  width: 90%;
+  margin: 0 auto 90px;
+
+  &_item {
+    list-style-type: none;
+    float: left;
+    width: 33%;
+    position: relative;
+    text-align: center;
+
+    &:before {
+      content: " ";
+      line-height: 30px;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #E6E6E6;
+      border-left: none;
+      display: block;
+      text-align: center;
+      margin: 8.5px auto 0px;
+      background-color: #E6E6E6;
+      box-shadow: $shadow_text;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 96%;
+      height: 11px;
+      background-color: #E6E6E6;
+      border: 1px solid #E6E6E6;
+      border-right: none;
+      top: 19px;
+      left: -50%;
+      z-index: -1;
+      box-shadow: $shadow_text;
+    }
+
+    &:first-child:after {
+      content: none;
+    }
+
+    &--active {
+      color: $cor_brand;
+
+      &:before {
+        border-color: $cor_brand;
+        background-color: $cor_brand;
+      }
+
+      &:after {
+        background-color: $cor_brand;
+      }
+    }
+
+    &-circle {
+      display: inline-block;
+      background-color: #fff;
+      width: 19px;
+      height: 19px;
+      position: absolute;
+      top: 38%;
+      left: 47.4%;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.16);
+    }
+  }
+}
+
+.donations_ongs {
+  margin-bottom: 30px;
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 85%;
+    padding: 25px;
+    margin: 0 auto 40px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: $shadow_box;
+    -webkit-transition: all .25s ease-in-out 0s;
+    -moz-transition: all .25s ease-in-out 0s;
+    transition: all .25s ease-in-out 0s;
+
+    &--select {
+      background-color: rgba(167, 91, 98, .1);
+      border-color: $cor_brand;
+    }
+  }
+
+  &-image {
+    margin-right: 30px;
+  }
+
+  &-content {}
+
+  &-name {
+    margin-bottom: 20px;
+    font: 26px 'Gotham Medium';
+    color: $cor_brand;
+  }
+
+  &-text {
+    margin-bottom: 20px;
+    width: 95%;
+    font: 14px/1.7 'Gotham Book';
+    color: #000;
+  }
+
+  &-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &-button {
+    margin-right: 45px;
+  }
+}
+
+.donations-value {
+  padding: 80px 0;
+
+  .container {
+    flex-direction: column;
+  }
+
+  &_text {
+    width: 70%;
+    margin: 0 auto 30px;
+    font: 20px 'Gotham Medium';
+    color: $cor_brand;
+    text-align: center;
+    text-shadow: $shadow_text;
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 40px;
+
+    &-title {
+      flex-basis: 100%;
+      margin-bottom: 60px;
+      font: 26px 'Gotham Medium';
+      color: $cor_brand;
+      text-align: center;
+      text-shadow: $shadow_text;
+    }
+
+    &-item {
+      flex: 1;
+      flex-basis: 50%;
+      padding: 80px 70px;
+
+      &-left {
+        border-right: 6px solid #753464;
+      }
+
+      &-right {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+    }
+
+    &-group {
+      flex-basis: 100%;
+      margin-bottom: 35px;
+
+      &-half {
+        flex-basis: 43%;
+        margin-right: 70px;
+      }
+    }
+
+    &-input {
+      width: 100%;
+      padding: 8px 10px;
+      font: 16px 'Gotham Medium';
+      border: none;
+      border-bottom: 1px solid #707070;
+
+      &-cc {
+        background: url('./assets/images/donation/ico-credit-card.png') no-repeat 98% center;
+      }
+
+      &-cvv {
+        background: url('./assets/images/donation/ico-cvv-code.png') no-repeat 98% center;
+      }
+    }
+  }
+
+  &_values {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-basis: 33.3%;
+      margin-bottom: 25px;
+    }
+
+    &-value {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 125px;
+      height: 125px;
+      margin-bottom: 7px;
+      font: 70px 'Gotham Medium';
+      color: #000;
+      border: 3.5px solid rgba(0, 0, 0, .4);
+      border-radius: 12px;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+      -ms-border-radius: 12px;
+      -o-border-radius: 12px;
+
+      img {
+        width: 60%;
+      }
+    }
+
+    &-text {
+      font: 14px 'Gotham Bold';
+      color: $cor_brand;
+    }
+
+
+  }
+
+  &_final {
+    background-color: #E8E8E8;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 255px;
+    padding: 12px 0;
+    margin: 0 auto;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+
+    &-coin {
+      font: 16px 'Gotham Medium';
+      margin-right: 18px;
+    }
+
+    &-input {
+      width: 120px;
+      margin-right: 8px;
+      font: 16px 'Gotham Medium';
+      color: #9F9F9F;
+      text-align: center;
+    }
+
+    &-text {
+      font: 16px 'Gotham Medium';
+    }
+  }
+}
+
+.congratulations {
+  padding: 80px 0;
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &_title {
+    margin-bottom: 45px;
+    font: 60px 'Gotham Bold';
+    color: $cor_brand;
+  }
+
+  &_text {
+    width: 60%;
+    margin: 0 auto 30px;
+    font: 18px 'Gotham Medium';
+    color: $cor_brand;
+    text-align: center;
+  }
+
+  &_stamp {
+    width: 314px;
+    height: 500px;
+    border: 1px solid #707070;
+  }
+}
+
+.confirmation {
+
+  &_title {
+    width: 100%;
+    margin-bottom: 45px;
+    font: 35px 'Gotham Bold';
+    color: $cor_brand;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: $shadow_text;
+  }
+
+  &_text {
+    margin-bottom: 30px;
+    font: 18px 'Gotham Medium';
+    color: $cor_brand;
+    text-shadow: $shadow_text;
+  }
+
+  .button {
+    margin-top: 50px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+  }
+}

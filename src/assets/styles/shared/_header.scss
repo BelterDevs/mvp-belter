@@ -1,0 +1,54 @@
+.header {
+  box-shadow: $shadow_header;
+  padding: 15px 0;
+  position: relative;
+  z-index: 2;
+
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-image {
+      box-shadow: $shadow_text;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+    }
+
+    &-text {
+      margin-left: 9px;
+      font: 15px 'Gotham Book';
+      color: #9F9F9F;
+    }
+  }
+
+  &_nav {
+
+    &-menu {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &-item {
+      margin-left: 30px;
+    }
+
+    &-link {
+      font: 18px 'Gotham Medium';
+      color: #9E9E9E;
+
+      &:hover {
+        color: $cor_brand;
+      }
+    }
+  }
+}

@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
 
+import { ModalProvider } from './providers/modal.provider';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+
+  constructor(private modalProvider: ModalProvider) { }
+
+  public close() {
+    this.modalProvider.destroy();
+  }
+  
 }

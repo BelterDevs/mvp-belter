@@ -1,0 +1,30 @@
+.button {
+  padding: 15px 30px;
+  font: 22px 'Gotham Book';
+  border-radius: 35px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  -ms-border-radius: 35px;
+  -o-border-radius: 35px;
+  box-shadow: $shadow_button;
+
+  &_sm {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  &_white {
+    background-color: #fff;
+    color: #8A4360;
+
+    &:hover {
+      background-color: $cor_brand;
+      color: #fff;
+    }
+  }
+
+  &_brand {
+    background: $gradient_button;
+    color: #fff;
+  }
+}

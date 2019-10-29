@@ -1,0 +1,139 @@
+.banner {
+  background: url('./assets/images/home/banner.png') no-repeat center;
+  background-size: cover;
+  position: relative;
+
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: (264 / 683) * 100%;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+  }
+
+  &_title {
+    width: 70%;
+    margin: 0 auto 50px;
+    font: 34px 'Gotham Medium';
+    text-align: center;
+    text-shadow: $shadow_text;
+  }
+
+  &_text {
+    width: 70%;
+    margin: 0 auto 70px;
+    font: 36px 'Gotham Bold';
+    text-align: center;
+    text-shadow: $shadow_text;
+  }
+
+  &_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+
+    &-item {
+
+    }
+  }
+}
+
+.belter {
+  padding: 80px 0;
+
+  .container {
+    flex-direction: column;
+  }
+
+  &_title {
+    margin-bottom: 45px;
+    font: 44px 'Gotham Medium';
+    color: $cor_brand;
+    text-align: center;
+    text-shadow: $shadow_text;
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 0;
+  }
+  
+  &_image {
+
+    &-left {
+      margin-right: 40px;
+    }
+
+    &-right {
+      margin-left: 40px;
+    }
+  }
+  
+  &_content {
+    flex-basis: 35%;
+    
+    .button {
+      margin-bottom: 25px;
+    }
+
+    &-right {
+      
+      .belter_subtitle {
+        text-align: right;
+      }
+      .belter_text {
+        margin-left: auto;
+      }
+
+      .belter_link {
+        float: right;
+      }
+    }
+  }
+  
+  &_subtitle {
+    margin-bottom: 35px;
+    font: 36px 'Gotham Book';
+    color: $cor_brand;
+    text-shadow: $shadow_text;
+  }
+
+  &_text {
+    width: 90%;
+    margin-bottom: 40px;
+    font: 16px 'Gotham Book';
+    color: $cor_brand;
+  }
+
+  &_link {
+    display: block;
+    margin-bottom: 15px;
+    font: 16px 'Gotham Book';
+    color: $cor_brand;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}

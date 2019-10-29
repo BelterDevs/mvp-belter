@@ -1,0 +1,95 @@
+<app-header></app-header>
+
+<div class="donations-value">
+  <div class="container">
+
+    <ul class="stepper">
+      <li class="stepper_item stepper_item--active">
+        <span class="stepper_item-circle"></span>
+      </li>
+      <li class="stepper_item stepper_item--active">
+        <span class="stepper_item-circle"></span>
+      </li>
+      <li class="stepper_item">
+        <span class="stepper_item-circle"></span>
+      </li>
+    </ul>
+
+    <p class="donations-value_text">A sua contribuição para a ONG %NOME_DA_ONG é fundamental, pois necessitam de
+      diversos recursos para conseguirem manter o excelente trabalho.</p>
+    <p class="donations-value_text">Obrigado por fazer a diferença e ajudar o próximo.</p>
+
+    <div class="donations-value_form">
+
+      <h1 class="donations-value_form-title">Selecione o valor da sua doação mensal</h1>
+
+      <div class="donations-value_form-item donations-value_form-item-left">
+
+        <ul class="donations-value_values">
+          <li class="donations-value_values-item">
+            <span class="donations-value_values-value">10</span>
+            <span class="donations-value_values-text">R$ 10,00</span>
+          </li>
+          <li class="donations-value_values-item">
+            <span class="donations-value_values-value">15</span>
+            <span class="donations-value_values-text">R$ 15,00</span>
+          </li>
+          <li class="donations-value_values-item">
+            <span class="donations-value_values-value">20</span>
+            <span class="donations-value_values-text">R$ 20,00</span>
+          </li>
+          <li class="donations-value_values-item">
+            <span class="donations-value_values-value">30</span>
+            <span class="donations-value_values-text">R$ 30,00</span>
+          </li>
+          <li class="donations-value_values-item">
+            <span class="donations-value_values-value">50</span>
+            <span class="donations-value_values-text">R$ 50,00</span>
+          </li>
+          <li class="donations-value_values-item">
+            <span class="donations-value_values-value">
+              <img src="./assets/images/donation/ico-other-value.png" alt="">
+            </span>
+            <span class="donations-value_values-text">Outro valor</span>
+          </li>
+        </ul>
+
+        <div class="donations-value_final">
+          <span class="donations-value_final-coin">R$</span>
+          <input type="number" class="donations-value_final-input" />
+          <span class="donations-value_final-text">/ mês</span>
+        </div>
+
+      </div>
+
+      <div class="donations-value_form-item donations-value_form-item-right">
+        <div class="donations-value_form-group">
+          <input type="number" class="donations-value_form-input donations-value_form-input-cc"
+            placeholder="Número do Cartão" />
+        </div>
+
+        <div class="donations-value_form-group donations-value_form-group-half">
+          <input type="text" class="donations-value_form-input" placeholder="Validade" />
+        </div>
+        <div class="donations-value_form-group donations-value_form-group-half no-margin-right">
+          <input type="number" class="donations-value_form-input donations-value_form-input-cvv" placeholder="CVV" />
+        </div>
+
+        <div class="donations-value_form-group">
+          <input type="text" class="donations-value_form-input" placeholder="Nome do titular" />
+        </div>
+
+        <div class="donations-value_form-group">
+          <input type="number" class="donations-value_form-input" placeholder="CPF" />
+        </div>
+
+        <button class="button button_brand" (click)="initLoginModal()">Prosseguirr</button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
