@@ -8,9 +8,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  status: boolean = false;
+  toggleMenu() {
+    this.status = !this.status;
+  }
+
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }

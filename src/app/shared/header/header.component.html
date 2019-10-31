@@ -2,24 +2,31 @@
   <div class="container">
 
     <div class="header_logo">
-      <img src="../../assets/images/logo.png" [routerLink]="'/'" class="header_logo-image" alt="Belter" title="Belter" />
+      <img src="../../assets/images/logo.png" [routerLink]="['/']" class="header_logo-image" alt="Belter" title="Belter" />
       <span class="header_logo-text">Por um mundo melhor</span>
     </div>
 
-    <nav class="header_nav">
+    <div class="header_hamburger" (click)="toggleMenu()" [ngClass]="status ? 'header_hamburger--open' : ''">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="header_nav" [ngClass]="status ? 'header_nav--open' : ''">
       <ul class="header_nav-menu">
         <li class="header_nav-item">
-          <a href="" class="header_nav-link">
+          <a class="header_nav-link">
             Sobre
           </a>
         </li>
         <li class="header_nav-item">
-          <a href="" class="header_nav-link">
+          <a class="header_nav-link">
             Voluntários Digitais
           </a>
         </li>
         <li class="header_nav-item">
-          <a href="" class="header_nav-link" [routerLink]="'/ong-list'">
+          <a class="header_nav-link" [routerLink]="['/ong-list']" routerLinkActive="active">
             ONG's
           </a>
         </li>

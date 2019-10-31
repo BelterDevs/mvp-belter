@@ -19,7 +19,7 @@
 
     <ul class="donations_ongs">
 
-      <li class="donations_ongs-item" [ngClass]="status ? 'donations_ongs-item--select' : ''">
+      <li class="donations_ongs-item">
         <img src="https://fakeimg.pl/142/" alt="" class="donations_ongs-image">
         <div class="donations_ongs-content">
           <p class="donations_ongs-name">Nome da ONG</p>
@@ -33,7 +33,7 @@
               <button class="button button_sm button_white" (click)="initLoginModal()">Saiba mais</button>
             </li>
             <li class="donations_ongs-button">
-              <button class="button button_brand" (click)="selectOng()">Selecionar</button>
+              <button class="button button_brand">Doar</button>
             </li>
           </ul>
         </div>
@@ -53,7 +53,7 @@
               <button class="button button_sm button_white" (click)="initLoginModal()">Saiba mais</button>
             </li>
             <li class="donations_ongs-button">
-              <button class="button button_brand">Selecionar</button>
+              <button class="button button_brand">Doar</button>
             </li>
           </ul>
         </div>

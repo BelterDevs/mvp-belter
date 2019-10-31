@@ -16,6 +16,7 @@ import { CongratulationsComponent } from './pages/donation/congratulations/congr
 import { DomProvider } from './providers/dom.provider';
 import { ModalProvider } from './providers/modal.provider';
 import { ModalConfirmationComponent } from './pages/donation/modal-confirmation/modal-confirmation.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ModalConfirmationComponent } from './pages/donation/modal-confirmation/
     OngComponent,
     ValueComponent,
     CongratulationsComponent,
-    ModalConfirmationComponent
+    ModalConfirmationComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

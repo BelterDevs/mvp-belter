@@ -31,7 +31,137 @@
     }
   }
 
+  &_hamburger {
+    width: 34px;
+    height: 34px;
+    position: relative;
+
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+
+    transition: .5s ease-in-out;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -ms-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+
+    cursor: pointer;
+    border: 2px solid $cor_brand;
+
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+
+    z-index: 99;
+
+    @media (min-width: $media_ipad) {
+      width: 44px;
+      height: 44px;
+    }
+
+    @media (min-width: $media_mobile) {
+      display: none;
+    }
+
+    span {
+      background: $cor_brand;
+      display: block;
+      width: 60%;
+      height: 2px;
+      position: absolute;
+      left: 6px;
+      border-radius: 9px;
+      opacity: 1;
+
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      
+      transition: .25s ease-in-out;
+      -webkit-transition: .25s ease-in-out;
+      -moz-transition: .25s ease-in-out;
+      -o-transition: .25s ease-in-out;
+      -ms-transition: .25s ease-in-out;
+
+      @media (min-width: $media_ipad) {
+        left: 8px;
+      }
+
+      &:nth-child(1) {
+        top: 8px;
+
+        @media (min-width: $media_ipad) {
+          top: 12px;
+        }
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 14px;
+
+        @media (min-width: $media_ipad) {
+          top: 20px;
+        }
+      }
+
+      &:nth-child(4) {
+        top: 21px;
+
+        @media (min-width: $media_ipad) {
+          top: 28px;
+        }
+      }
+    }
+
+    &--open {
+      position: fixed;
+      right: 5%;
+
+      span:nth-child(1) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+      }
+  
+      span:nth-child(2) {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+  
+      span:nth-child(3) {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+  
+      span:nth-child(4) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+      }
+    }
+  }
+
   &_nav {
+    display: none;
+
+    @media (min-width: $media_ipad) {
+      display: block;
+    }
+
+    &--open {
+      display: block;
+    }
 
     &-menu {
       display: flex;

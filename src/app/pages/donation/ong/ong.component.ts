@@ -20,11 +20,6 @@ export class OngComponent implements OnInit {
     this.modalProvider.init(OngDetailsComponent, inputs, {});
   }
 
-  status: boolean = false;
-  selectOng() {
-    this.status = !this.status;
-  }
-
   ngOnInit() {
   }
 
