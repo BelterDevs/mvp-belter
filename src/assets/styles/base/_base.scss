@@ -5,19 +5,29 @@
 }
 
 .default-title {
-  font: 40px 'Gotham Bold';
+  font: 28px 'Gotham Bold';
   color: $cor_brand;
   text-align: center;
   text-shadow: $shadow_text;
+
+  @media (min-width: $media_ipad_pro) {
+    font-size: 40px;
+  }
 
   &:after {
     content: '';
     background-color: $cor_brand;
     display: block;
     width: 35%;
-    max-width: 150px;
+    max-width: 50px;
     height: 7px;
-    margin: 30px auto 70px;
+    margin: 20px auto 40px;
+
+    @media (min-width: $media_ipad_pro) {
+      width: 35%;
+      max-width: 150px;
+      margin: 30px auto 70px;
+    }
   }
 }
 

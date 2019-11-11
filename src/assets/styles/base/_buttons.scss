@@ -1,12 +1,17 @@
 .button {
-  padding: 15px 30px;
-  font: 22px 'Gotham Book';
+  padding: 10px 20px;
+  font: 12px 'Gotham Book';
   border-radius: 35px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   -ms-border-radius: 35px;
   -o-border-radius: 35px;
   box-shadow: $shadow_button;
+
+  @media (min-width: $media_ipad) {
+    padding: 15px 30px;
+    font-size: 22px;
+  }
 
   &_sm {
     padding: 10px 20px;

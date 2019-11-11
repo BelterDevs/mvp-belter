@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { ModalProvider } from '../../../providers/modal.provider';
+import {ModalProvider} from '../../../providers/modal.provider';
+import DataService from '../../../services/data.service';
 
 @Component({
   selector: 'app-ong-details',
@@ -8,7 +9,11 @@ import { ModalProvider } from '../../../providers/modal.provider';
 })
 export class OngDetailsComponent {
 
-  constructor(private modalProvider: ModalProvider) { }
+  dataService: DataService;
+
+  constructor(private modalProvider: ModalProvider, dataService: DataService) {
+    this.dataService = dataService;
+  }
 
   public close() {
     this.modalProvider.destroy();

@@ -19,51 +19,25 @@
 
     <ul class="donations_ongs">
 
-      <li class="donations_ongs-item">
-        <img src="https://fakeimg.pl/142/" alt="" class="donations_ongs-image">
+      <li class="donations_ongs-item" *ngFor="let ong of dataService.getData('ongs');">
+        <img src="{{ this.dataService.loadOngPicture(ong['recipient']['id'])}}"
+             alt="{{ ong['name']}}"
+             class="donations_ongs-image">
         <div class="donations_ongs-content">
-          <p class="donations_ongs-name">Nome da ONG</p>
-          <p class="donations_ongs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum.</p>
+          <p class="donations_ongs-name">{{ ong['name'] }}</p>
+          <p class="donations_ongs-text">{{ ong['description'] }}</p>
           <ul class="donations_ongs-buttons">
+            <!-- <li class="donations_ongs-button">
+              <button class="button button_sm button_white" (click)="initLoginModal(ong)">Saiba mais</button>
+            </li> -->
             <li class="donations_ongs-button">
-              <button class="button button_sm button_white" (click)="initLoginModal()">Saiba mais</button>
-            </li>
-            <li class="donations_ongs-button">
-              <button class="button button_brand">Doar</button>
-            </li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="donations_ongs-item">
-        <img src="https://fakeimg.pl/142/" alt="" class="donations_ongs-image">
-        <div class="donations_ongs-content">
-          <p class="donations_ongs-name">Nome da ONG</p>
-          <p class="donations_ongs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum.</p>
-          <ul class="donations_ongs-buttons">
-            <li class="donations_ongs-button">
-              <button class="button button_sm button_white" (click)="initLoginModal()">Saiba mais</button>
-            </li>
-            <li class="donations_ongs-button">
-              <button class="button button_brand">Doar</button>
+              <button class="button button_brand" (click)="selectOng(ong)">Doar</button>
             </li>
           </ul>
         </div>
       </li>
 
     </ul>
-
-    <button class="button button_brand">
-      Prosseguir
-    </button>
 
   </div>
 </div>

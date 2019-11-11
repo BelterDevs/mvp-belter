@@ -8,11 +8,10 @@ import { ModalProvider } from './providers/modal.provider';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  
   constructor(private modalProvider: ModalProvider) { }
 
   public close() {
     this.modalProvider.destroy();
   }
-  
 }

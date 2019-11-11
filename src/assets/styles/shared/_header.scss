@@ -2,7 +2,12 @@
   box-shadow: $shadow_header;
   padding: 15px 0;
   position: relative;
-  z-index: 2;
+  z-index: 99;
+  
+  @media (min-width: $media_ipad_pro) {
+    z-index: 2;
+
+  }
 
   .container {
     flex-direction: row;
@@ -64,7 +69,7 @@
       height: 44px;
     }
 
-    @media (min-width: $media_mobile) {
+    @media (min-width: $media_ipad_pro) {
       display: none;
     }
 
@@ -154,18 +159,34 @@
 
   &_nav {
     display: none;
-
-    @media (min-width: $media_ipad) {
+    
+    @media (min-width: $media_ipad_pro) {
       display: block;
+      position: relative;
     }
-
+    
     &--open {
+      background-color: rgba(0, 0, 0, .75);
       display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
     }
 
     &-menu {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 60%;
+      margin-top: 60px;
+
+      @media (min-width: $media_ipad_pro) {
+        flex-direction: row; 
+        margin-top: 0;
+      }
     }
 
     &-item {
@@ -173,8 +194,12 @@
     }
 
     &-link {
-      font: 18px 'Gotham Medium';
+      font: 24px 'Gotham Medium';
       color: #9E9E9E;
+
+      @media (min-width: $media_ipad_pro) {
+        font-size: 18px;
+      }
 
       &:hover {
         color: $cor_brand;
