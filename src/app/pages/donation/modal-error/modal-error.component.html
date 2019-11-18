@@ -1,0 +1,54 @@
+<div id="overlay" *ngIf="isOpen"></div>
+<div id="modal-container" *ngIf="isOpen">
+  <div class="modal confirmation">
+    <button class="modal_close" (click)="close()">
+      <span class="fa-stack fa-2x">
+        <i class="far fa-circle fa-stack-2x"></i>
+        <i class="fas fa-times fa-stack-1x"></i>
+      </span>
+    </button>
+
+    <div class="modal_content" *ngIf="code == VALIDATION_ERROR_CODE">
+
+      <p class="confirmation_title">Isto não devia estar acontecendo 422</p>
+
+      <!-- <p class="confirmation_text">
+        <strong class="confirmation_strong">ONG selecionada: </strong>
+        <span class="confirmation_result">dsdsdsdsd</span>
+      </p>
+
+      <p class="confirmation_text">
+        <strong class="confirmation_strong">Valor da doação mensal: </strong>
+        <span class="confirmation_result">R$ 1091091,00</span>
+      </p> -->
+
+      <!--<button class="button button_brand"
+        (click)="submitDonationForm(); $event.preventDefault(); $event.stopPropagation()">CONFIRMAR
+      </button>-->
+
+    </div>
+
+    <div class="modal_content" *ngIf="code == SERVER_ERROR_CODE">
+
+      <p class="confirmation_text">Por gentileza verifique novamente os seus dados e tente novamente.</p>
+
+      <p class="confirmation_text">Caso não consiga mesmo assim, entre em contato com <a href="mailto:suporte@belter.com.br" target="_blank" rel="noopener noreferrer">suporte@belter.com.br</a></p>
+
+      <!-- <p class="confirmation_text">
+        <strong class="confirmation_strong">ONG selecionada: </strong>
+        <span class="confirmation_result">dsdsdsdsd</span>
+      </p>
+
+      <p class="confirmation_text">
+        <strong class="confirmation_strong">Valor da doação mensal: </strong>
+        <span class="confirmation_result">R$ 1091091,00</span>
+      </p> -->
+
+      <!--<button class="button button_brand"
+        (click)="submitDonationForm(); $event.preventDefault(); $event.stopPropagation()">CONFIRMAR
+      </button>-->
+
+    </div>
+
+  </div>
+</div>

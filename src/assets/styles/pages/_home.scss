@@ -38,16 +38,19 @@
     width: 90%;
     margin: 0 auto 25px;
     font: 14px 'Gotham Medium';
-    //margin: 0 auto 50px;
-    //width: 70%;
-    //font: 34px 'Gotham Medium';
     text-align: center;
     text-shadow: $shadow_text;
 
     @media (min-width: $media_ipad) {
       width: 80%;
       margin-bottom: 35px;
-      font-size: 24px;
+      font-size: 26px;
+    }
+
+    @media (min-width: $media_desktop) {
+      width: 75%;
+      margin-bottom: 50px;
+      font-size: 34px;
     }
   }
 
@@ -55,9 +58,6 @@
     width: 90%;
     margin: 0 auto 30px;
     font: 16px 'Gotham Bold';
-    //width: 70%;
-    //margin: 0 auto 70px;
-    //font: 36px 'Gotham Bold';
     text-align: center;
     text-shadow: $shadow_text;
 
@@ -66,15 +66,32 @@
       margin-bottom: 40px;
       font-size: 24px;
     }
+
+    @media (min-width: $media_ipad_pro) {
+      margin-bottom: 55px;
+    }
+
+    @media (min-width: $media_desktop) {
+      width: 70%;
+      margin-bottom: 70px;
+      font-size: 36px;
+    }
   }
 
   &_buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    //width: 50%;
     width: 90%;
     margin: 0 auto;
+
+    @media (min-width: $media_ipad) {
+      width: 80%;
+    }
+
+    @media (min-width: $media_desktop) {
+      width: 50%;
+    }    
 
     &-item {}
   }

@@ -4,20 +4,24 @@ import {ModalProvider} from '../../../providers/modal.provider';
 import DataService from '../../../services/data.service';
 
 @Component({
-  selector: 'app-modal-confirmation',
-  templateUrl: './modal-confirmation.component.html',
-  styleUrls: ['./modal-confirmation.component.scss']
+  selector: 'app-modal-error',
+  templateUrl: './modal-error.component.html',
+  styleUrls: ['./modal-error.component.scss']
 })
-export class ModalConfirmationComponent implements OnInit {
+export class ModalErrorComponent implements OnInit {
+
+  VALIDATION_ERROR_CODE = 422;
+  SERVER_ERROR_CODE = 500;
 
   dataService: DataService;
   el: ElementRef;
   @Input() isOpen = false;
+  @Input() code = 500;
 
   @Output() submitFormActionEvent = new EventEmitter<boolean>();
   @Output() closeModalEvent = new EventEmitter<boolean>();
 
-  constructor(private modalProvider: ModalProvider, dataService: DataService, el: ElementRef) {
+  constructor(dataService: DataService, el: ElementRef) {
     this.dataService = dataService;
     this.el = el;
   }
@@ -26,7 +30,8 @@ export class ModalConfirmationComponent implements OnInit {
     this.closeModalEvent.emit(false);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   submitDonationForm() {
     this.submitFormActionEvent.emit(true);

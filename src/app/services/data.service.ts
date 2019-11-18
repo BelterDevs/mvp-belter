@@ -5,10 +5,12 @@ import {slugify} from '../utils/helpers';
 class DataService {
   data = {
     donation: {
+      planId: 0,
       value: 0,
       cardNumber: '',
       expiration: '',
       cvv: '',
+      ownerEmail: '',
       ownerName: '',
       ownerCPF: '',
     },
@@ -17,8 +19,13 @@ class DataService {
       recipient: {
         bankAccount: {
           legalName: '${ongName}'
-        }
+        },
+        id: null
       }
+    },
+    plans: [],
+    plan: {
+      id: 0
     }
   };
 
@@ -48,6 +55,18 @@ class DataService {
         id: 're_ck1cjngtp06lzo46etkhfpajx',
         picture: '/assets/images/ongs/aacc.jpg'
       },
+    ],
+    plans: [
+      {
+        amount: 3000,
+        id: '439745',
+        name: 'R$ 30,00'
+      },
+      {
+        amount: 5000,
+        id: '439745',
+        name: 'R$ 50,00'
+      }
     ]
   };
 
@@ -55,6 +74,30 @@ class DataService {
     const url = 'https://plataforma-belter-api.appspot.com/api/ongs'; // production
     // const url = 'http://localhost:4200/assets/fake-data/ongs.json'; // development
     axios.get(url).then(response => this.data.ongs = response.data);
+  }
+
+  getPlans() {
+    const url = 'https://plataforma-belter-api.appspot.com/api/plans'; // production
+    axios.get(url).then(response => {
+      this.data.plans = response.data;
+      const resolvedPlans = this.resolvePlans(true);
+      //console.log({resolvedPlans});
+    });
+  }
+
+  resolvePlans(needResolver = true) {
+    if (this.data.plans.length === 0) {
+      return [];
+    }
+
+    if (!needResolver) {
+      return this.data.plans;
+    }
+
+    return [
+      ...this.data.plans.filter(plan => plan.id !== '439745'),
+      ...this.mock.plans
+    ].sort((a, b) => (a.amount > b.amount) ? 1 : -1);
   }
 
   setSelectedOng(data) {
@@ -93,6 +136,8 @@ class DataService {
     if (this.data.donation.hasOwnProperty(objKey)) {
       this.data.donation[objKey] = objValue;
     }
+
+    //console.log(objKey, objValue, this.data.donation.hasOwnProperty(objKey), this.data.donation[objKey]);
   }
 
   setCard(key, value) {
@@ -111,6 +156,34 @@ class DataService {
     }
 
     return 'https://fakeimg.pl/250/';
+  }
+
+  createDonationDataFactory() {
+    return {
+      creditCard: {
+        card_number: this.data.donation.cardNumber.replace(' ', ''),
+        card_cvv: this.data.donation.cvv,
+        card_holder_name: this.data.donation.ownerName,
+        card_expiration_date: this.data.donation.expiration.replace('/', '')
+      },
+      customer: {
+        email: this.data.donation.ownerEmail,
+        name: this.data.donation.ownerName,
+        document_number: this.data.donation.ownerCPF
+      },
+      plan_id: this.data.donation.planId,
+      amount: this.data.donation.value,
+      split_rules: [
+        {
+          recipient_id: this.data.ong.recipient.id
+        }
+      ]
+    };
+  }
+
+  postDonation() {
+    const url = 'https://plataforma-belter-api.appspot.com/api/public/donate';
+    return axios.post(url, this.createDonationDataFactory());
   }
 }
 

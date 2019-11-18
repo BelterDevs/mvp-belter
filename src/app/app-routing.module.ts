@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'ong-list', component: OngListComponent },
   { path: 'donation-ong', component: OngComponent },
   { path: 'donation-value/:slug', component: ValueComponent },
-  { path: 'donation-congratulations', component: CongratulationsComponent },
+  { path: 'donation-congratulations/:slug', component: CongratulationsComponent },
   { path: 'contact', component: ContactComponent }
 ];
 
