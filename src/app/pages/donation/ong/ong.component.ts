@@ -5,12 +5,13 @@ import {Component, OnInit} from '@angular/core';
 import {OngDetailsComponent} from '../../ongs/ong-details/ong-details.component';
 
 import {ModalProvider} from '../../../providers/modal.provider';
-import DataService from '../../../services/data.service';
 import {slugify} from '../../../utils/helpers';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-ong',
   templateUrl: './ong.component.html',
+  providers: [ DataService ]
   // styleUrls: ['./ong.component.scss']
 })
 export class OngComponent implements OnInit {

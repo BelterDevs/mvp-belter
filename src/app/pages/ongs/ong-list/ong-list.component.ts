@@ -5,8 +5,8 @@ import {Component, OnInit} from '@angular/core';
 import {OngDetailsComponent} from '../../ongs/ong-details/ong-details.component';
 
 import {ModalProvider} from '../../../providers/modal.provider';
-import DataService from '../../../services/data.service';
 import {slugify} from '../../../utils/helpers';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-ong-list',
@@ -36,7 +36,6 @@ export class OngListComponent implements OnInit {
 
   selectOng(data) {
     this.dataService.setSelectedOng(data);
-    //this.router.navigate(['/donation-value'], data);
     this.router.navigate(['/donation-value', slugify(data.recipient.bankAccount.legalName)]);
   }
 

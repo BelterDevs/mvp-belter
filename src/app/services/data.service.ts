@@ -1,8 +1,10 @@
 // tslint:disable:no-shadowed-variable
 import axios from 'axios';
-import {slugify} from '../utils/helpers';
+import { slugify } from '../utils/helpers';
 
-class DataService {
+export class DataService {
+  constructor() {}
+
   data = {
     donation: {
       planId: 0,
@@ -81,7 +83,6 @@ class DataService {
     axios.get(url).then(response => {
       this.data.plans = response.data;
       const resolvedPlans = this.resolvePlans(true);
-      //console.log({resolvedPlans});
     });
   }
 
@@ -137,7 +138,7 @@ class DataService {
       this.data.donation[objKey] = objValue;
     }
 
-    //console.log(objKey, objValue, this.data.donation.hasOwnProperty(objKey), this.data.donation[objKey]);
+    // console.log(objKey, objValue, this.data.donation.hasOwnProperty(objKey), this.data.donation[objKey]);
   }
 
   setCard(key, value) {
@@ -186,5 +187,3 @@ class DataService {
     return axios.post(url, this.createDonationDataFactory());
   }
 }
-
-export default DataService;

@@ -1,7 +1,6 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Injectable} from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
-import {ModalProvider} from '../../../providers/modal.provider';
-import DataService from '../../../services/data.service';
 
 @Component({
   selector: 'app-modal-error',

@@ -4,14 +4,14 @@ import { Injectable, Injector, ComponentFactoryResolver, EmbeddedViewRef, Applic
 @Injectable()
 export class DomProvider {
 
-  private childComponentRef:any;
+  private childComponentRef: any;
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector
   ) { }
 
-  public appendComponentTo(parentId: string, child: any, childConfig?: childConfig) {
+  public appendComponentTo(parentId: string, child: any, childConfig?: IChildConfig) {
     // Create a component reference from the component 
     const childComponentRef = this.componentFactoryResolver
       .resolveComponentFactory(child)
@@ -48,20 +48,19 @@ export class DomProvider {
   //   for(var key in outputs){
   //     componentRef.instance[key] = outputs[key];
   //   }
-    
   // }
   private attachConfig(config, componentRef) {
     const inputs = config.inputs;
     const outputs = config.outputs;
     // for (const key in inputs) {
-        componentRef.instance['inputs'] = inputs;
+    componentRef.instance['inputs'] = inputs;
     // }
     // for (const key in outputs) {
-        componentRef.instance['outputs'] = outputs;
+    componentRef.instance['outputs'] = outputs;
     // }
+  }
 }
-}
-interface childConfig{
-  inputs:object,
-  outputs:object
+interface IChildConfig {
+  inputs: object,
+  outputs: object
 }

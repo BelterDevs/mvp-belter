@@ -6,7 +6,7 @@ export class ModalProvider {
 
   constructor(private domService: DomProvider) { }
 
-  private modalElementId = 'modal-container';
+private modalElementId = 'modal-container';
   private overlayElementId = 'overlay';
 
   init(component: any, inputs: object, outputs: object) {

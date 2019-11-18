@@ -55,6 +55,8 @@
 
       <form class="donations-value_form-item donations-value_form-item-right" [formGroup]="registerForm"
         (ngSubmit)="onSubmit($event)" id="donation-form" action="http://localhost:8000/test.php">
+        
+        
         <input type="hidden" formControlName="value" value="{{ this.dataService.getData('donation')['value'] }}">
 
         <div class="donations-value_form-group">

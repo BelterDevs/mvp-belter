@@ -1,7 +1,7 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import {ModalProvider} from '../../../providers/modal.provider';
-import DataService from '../../../services/data.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-modal-confirmation',

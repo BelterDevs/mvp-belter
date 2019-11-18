@@ -17,10 +17,10 @@ import {ModalConfirmationComponent} from './pages/donation/modal-confirmation/mo
 import {ModalErrorComponent} from './pages/donation/modal-error/modal-error.component';
 import {ContactComponent} from './pages/contact/contact.component';
 
-import {DomProvider} from './providers/dom.provider';
-import {ModalProvider} from './providers/modal.provider';
-import DataService from './services/data.service';
 import {NoDblClickDirective} from './directives/no-dbl-click.directive';
+import { DomProvider } from './providers/dom.provider';
+import { ModalProvider } from './providers/modal.provider';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [

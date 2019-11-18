@@ -2,12 +2,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CreditCardValidators} from 'ngx-validators';
-import {ModalConfirmationComponent} from '../modal-confirmation/modal-confirmation.component';
-import {ModalProvider} from '../../../providers/modal.provider';
-import DataService from '../../../services/data.service';
 import {GenericValidator} from '../../../utils/GenericValidator';
-import {CongratulationsComponent} from '../congratulations/congratulations.component';
 import {slugify} from '../../../utils/helpers';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-value',
@@ -16,7 +13,6 @@ import {slugify} from '../../../utils/helpers';
 export class ValueComponent implements OnInit {
 
   constructor(
-    private modalProvider: ModalProvider,
     dataService: DataService,
     route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -42,10 +38,8 @@ export class ValueComponent implements OnInit {
   openModalConfirmation(open = true) {
     this.submitted = true;
     if (this.registerForm.invalid) {
-      //console.log(this.registerForm.controls);
       return false;
     }
-
 
     this.modalIsOpen = open;
   }
@@ -57,7 +51,6 @@ export class ValueComponent implements OnInit {
   selectDonationValue(option) {
     (document.getElementById('custom-donation-input') as HTMLInputElement).value = option.value;
 
-    // document.querySelector('#custom-donation-input').value = ' ';
     this.dataService.setDonation(option);
     this.registerForm.controls.value.setValue(option.value);
     this.selectPlanByValue(option.value);
@@ -114,8 +107,6 @@ export class ValueComponent implements OnInit {
 
   setDonationEmail(option) {
     this.dataService.setDonation(option);
-    //console.log('ownerEmail =', this.dataService.getData('donation').ownerEmail);
-
     return option.ownerEmail;
   }
 
@@ -144,11 +135,9 @@ export class ValueComponent implements OnInit {
       ownerName: ['', Validators.compose([Validators.required, Validators.minLength(2)])]
     };
     this.registerForm = this.formBuilder.group(rules);
-
-    //this.fakeData();
   }
 
-  onSubmit() {
+  onSubmit(evt?: any) {
     this.submitted = true;
     if (this.registerForm.invalid) {
       return false;

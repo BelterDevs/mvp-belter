@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import DataService from '../../../services/data.service';
+import {Component, Input, OnInit, NgModule} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-congratulations',
@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class CongratulationsComponent implements OnInit {
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) {}
+  constructor(public dataService: DataService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     setTimeout(() => {
