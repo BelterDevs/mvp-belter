@@ -1,0 +1,53 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Gotham Book';
+}
+
+a,
+a img {
+  -webkit-transition: all .25s ease-in-out 0s;
+  -moz-transition: all .25s ease-in-out 0s;
+  transition: all .25s ease-in-out 0s;
+  text-decoration: none;
+
+  &:focus,
+  &:hover{
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+ul, 
+li, 
+ol {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+input,
+select,
+:focus {
+  outline: 0;
+}
+select::-ms-expand { 
+  display: none; /* remove default arrow on ie10 and ie11 */
+}
+
+/* For Firefox */
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
