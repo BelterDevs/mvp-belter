@@ -1,0 +1,209 @@
+.header {
+  box-shadow: $shadow_header;
+  padding: 15px 0;
+  position: relative;
+  z-index: 99;
+  
+  @media (min-width: $media_ipad_pro) {
+    z-index: 2;
+
+  }
+
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-image {
+      box-shadow: $shadow_text;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+    }
+
+    &-text {
+      margin-left: 9px;
+      font: 15px 'Gotham Book';
+      color: #9F9F9F;
+    }
+  }
+
+  &_hamburger {
+    width: 34px;
+    height: 34px;
+    position: relative;
+
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+
+    transition: .5s ease-in-out;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -ms-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+
+    cursor: pointer;
+    border: 2px solid $cor_brand;
+
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+
+    z-index: 99;
+
+    @media (min-width: $media_ipad) {
+      width: 44px;
+      height: 44px;
+    }
+
+    @media (min-width: $media_ipad_pro) {
+      display: none;
+    }
+
+    span {
+      background: $cor_brand;
+      display: block;
+      width: 60%;
+      height: 2px;
+      position: absolute;
+      left: 6px;
+      border-radius: 9px;
+      opacity: 1;
+
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      
+      transition: .25s ease-in-out;
+      -webkit-transition: .25s ease-in-out;
+      -moz-transition: .25s ease-in-out;
+      -o-transition: .25s ease-in-out;
+      -ms-transition: .25s ease-in-out;
+
+      @media (min-width: $media_ipad) {
+        left: 8px;
+      }
+
+      &:nth-child(1) {
+        top: 8px;
+
+        @media (min-width: $media_ipad) {
+          top: 12px;
+        }
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 14px;
+
+        @media (min-width: $media_ipad) {
+          top: 20px;
+        }
+      }
+
+      &:nth-child(4) {
+        top: 21px;
+
+        @media (min-width: $media_ipad) {
+          top: 28px;
+        }
+      }
+    }
+
+    &--open {
+      position: fixed;
+      right: 5%;
+
+      span:nth-child(1) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+      }
+  
+      span:nth-child(2) {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+  
+      span:nth-child(3) {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+  
+      span:nth-child(4) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+      }
+    }
+  }
+
+  &_nav {
+    display: none;
+    
+    @media (min-width: $media_ipad_pro) {
+      display: block;
+      position: relative;
+    }
+    
+    &--open {
+      background-color: rgba(0, 0, 0, .75);
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    &-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 60%;
+      margin-top: 60px;
+
+      @media (min-width: $media_ipad_pro) {
+        flex-direction: row; 
+        margin-top: 0;
+      }
+    }
+
+    &-item {
+      margin-left: 30px;
+    }
+
+    &-link {
+      font: 24px 'Gotham Medium';
+      color: #9E9E9E;
+
+      @media (min-width: $media_ipad_pro) {
+        font-size: 18px;
+      }
+
+      &:hover {
+        color: $cor_brand;
+      }
+    }
+  }
+}

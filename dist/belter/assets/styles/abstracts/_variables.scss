@@ -1,0 +1,19 @@
+// Colors
+$cor_brand: #A75B62;
+
+// Gradient
+$gradient_button: linear-gradient(180deg, #A7525A 0%, #8F4866 51%, #783E72 100%) 0% 0% no-repeat;
+$gradient_footer: linear-gradient(180deg, #A75B62 0%, #783E72 100%) 0% 0% no-repeat;
+
+// Shadows
+$shadow_header: 0px 2px 12px rgba(0, 0, 0, .48);
+$shadow_footer: 0px -2px 12px rgba(0, 0, 0, .48);
+$shadow_button: 0px 10px 20px rgba(0, 0, 0, .17);
+$shadow_text: 0px 3px 6px rgba(0, 0, 0, .16);
+$shadow_box: 1px 2px 5px rgba(0, 0, 0, .08);
+
+// Resolutions
+$media_desktop: 1200px;
+$media_ipad_pro: 992px;
+$media_ipad: 768px;
+$media_mobile: 480px;

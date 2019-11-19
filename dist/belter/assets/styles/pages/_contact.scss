@@ -1,0 +1,97 @@
+.contact {
+  padding: 80px 0;
+
+  .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &_title {
+    flex-basis: 100%;
+    margin-bottom: 100px;
+    font: 35px 'Gotham Bold';
+    color: $cor_brand;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &_subtitle {
+    margin-bottom: 50px;
+    font: 22px 'Gotham Bold';
+    color: #000;
+  }
+
+  &_content {
+    flex-basis: 50%;
+    padding: 0 70px;
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_item {
+    margin-bottom: 15px;
+    font: 16px 'Gotham Bold';
+    color: $cor_brand;
+
+    
+  }
+
+  &_social {
+    display: flex;
+    flex-direction: row;
+
+    &-item {
+      margin-right: 60px;
+      
+      i {
+        font-size: 3em;
+        color: $cor_brand;
+      }
+    }
+  }
+
+  // &_form {
+  //   display: flex;
+  //   flex-direction: row;
+  //   flex-wrap: wrap;
+  //   width: 80%;
+  //   margin: 0 auto;
+
+  //   &-group {
+  //     flex-basis: 100%;
+  //     padding: 0 15px;
+  //     margin-bottom: 35px;
+
+  //     &-half {
+  //       flex-basis: 50%;
+  //     }
+  //   }
+
+  //   &-input,
+  //   &-textarea {
+  //     width: 100%;
+  //     padding: 8px 10px;
+  //     font: 16px 'Gotham Medium';
+  //     border: none;
+  //     border-bottom: 1px solid #707070;
+  //   }
+
+  //   &-textarea {
+  //     height: 100px;
+  //   }
+
+  //   .button {
+  //     position: relative;
+  //     left: 50%;
+  //     transform: translateX(-50%);
+  //     -webkit-transform: translateX(-50%);
+  //     -moz-transform: translateX(-50%);
+  //     -ms-transform: translateX(-50%);
+  //     -o-transform: translateX(-50%);
+  //   }
+  // }
+
+}

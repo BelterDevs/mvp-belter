@@ -1,0 +1,211 @@
+.banner {
+  background: url('./assets/images/home/banner.png') no-repeat center;
+  background-size: cover;
+  position: relative;
+
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: (264 / 400) * 100%;
+
+    @media (min-width: $media_ipad) {
+      padding-top: (264 / 560) * 100%;
+    }
+
+    @media (min-width: $media_desktop) {
+      padding-top: (264 / 683) * 100%;
+    }
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+  }
+
+  &_title {
+    width: 90%;
+    margin: 0 auto 25px;
+    font: 14px 'Gotham Medium';
+    text-align: center;
+    text-shadow: $shadow_text;
+
+    @media (min-width: $media_ipad) {
+      width: 80%;
+      margin-bottom: 35px;
+      font-size: 26px;
+    }
+
+    @media (min-width: $media_desktop) {
+      width: 75%;
+      margin-bottom: 50px;
+      font-size: 34px;
+    }
+  }
+
+  &_text {
+    width: 90%;
+    margin: 0 auto 30px;
+    font: 16px 'Gotham Bold';
+    text-align: center;
+    text-shadow: $shadow_text;
+
+    @media (min-width: $media_ipad) {
+      width: 80%;
+      margin-bottom: 40px;
+      font-size: 24px;
+    }
+
+    @media (min-width: $media_ipad_pro) {
+      margin-bottom: 55px;
+    }
+
+    @media (min-width: $media_desktop) {
+      width: 70%;
+      margin-bottom: 70px;
+      font-size: 36px;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+
+    @media (min-width: $media_ipad) {
+      width: 80%;
+    }
+
+    @media (min-width: $media_desktop) {
+      width: 50%;
+    }    
+
+    &-item {}
+  }
+}
+
+.belter {
+  padding: 40px 0;
+
+  @media (min-width: $media_ipad_pro) {
+    padding: 80px 0;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  &_title {
+    margin-bottom: 45px;
+    font: 24px 'Gotham Medium';
+    color: $cor_brand;
+    text-align: center;
+    text-shadow: $shadow_text;
+
+    @media (min-width: $media_ipad_pro) {
+      font-size: 44px;
+    }
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 0;
+
+    @media (min-width: $media_ipad) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+  }
+
+  &_image {
+    max-width: 70%;
+    margin-bottom: 25px;
+
+    @media (min-width: $media_ipad) {
+      max-width: 345px;
+      margin-bottom: 0;
+    }
+
+    &-left {
+
+      @media (min-width: $media_ipad) {
+        margin-right: 40px;
+      }
+    }
+
+    &-right {
+
+      @media (min-width: $media_ipad) {
+        margin-left: 40px;
+      }
+    }
+  }
+
+  &_content {
+    flex-basis: 35%;
+
+    .button {
+      margin-bottom: 25px;
+    }
+
+    &-right {
+
+      .belter_subtitle {
+        text-align: right;
+      }
+
+      .belter_text {
+        margin-left: auto;
+      }
+
+      .belter_link {
+        float: right;
+      }
+    }
+  }
+
+  &_subtitle {
+    margin-bottom: 35px;
+    font: 22px 'Gotham Book';
+    color: $cor_brand;
+    text-shadow: $shadow_text;
+
+    @media (min-width: $media_ipad_pro) {
+      font-size: 36px;
+    }
+  }
+
+  &_text {
+    width: 90%;
+    margin-bottom: 40px;
+    font: 16px 'Gotham Book';
+    color: $cor_brand;
+  }
+
+  &_link {
+    display: block;
+    margin-bottom: 15px;
+    font: 16px 'Gotham Book';
+    color: $cor_brand;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}

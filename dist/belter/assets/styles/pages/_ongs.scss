@@ -1,0 +1,128 @@
+.ongs {
+  padding: 40px 0;
+
+  @media (min-width: $media_ipad_pro) {
+    padding: 80px 0;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  &_list {
+    padding-top: 50px;
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 25px;
+    margin: 0 auto 40px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: $shadow_box;
+
+    @media (min-width: $media_ipad_pro) {
+      flex-direction: row;
+      width: 85%;
+    }
+
+    &-image {
+      max-width: 255px;
+      margin-bottom: 25px;
+      
+      @media (min-width: $media_ipad_pro) {
+        margin-right: 30px;
+        margin-bottom: 0;  
+      }
+    }
+
+    &-content {
+
+    }
+
+    &-name {
+      margin-bottom: 20px;
+      font: 26px 'Gotham Medium';
+      color: $cor_brand;
+    }
+
+    &-text {
+      margin-bottom: 20px;
+      width: 100%;
+      font: 14px/1.7 'Gotham Book';
+      color: #000;
+
+      @media (min-width: $media_ipad_pro) {
+        width: 95%;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &-button {
+      margin-right: 45px;
+    }
+  }
+}
+
+.ong-details {
+
+  &_cover {
+    width: 100%;
+    margin-bottom: 50px;
+    position: relative;
+    text-align: center;
+
+    &-image {
+      width: 255px;
+      margin: 0 auto;
+    }
+  }
+
+  &_name {
+    width: 100%;
+    margin-bottom: 30px;
+    font: 40px 'Gotham Medium';
+    color: $cor_brand;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &_text {
+    margin-bottom: 45px;
+    font: 14px/1.7 'Gotham Book';
+    color: #000;
+    text-align: center;
+  }
+
+  &_title {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font: 40px 'Gotham Bold';
+    color: $cor_brand;
+    text-align: center;
+  }
+
+  .button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &_media {
+
+  }
+
+}
