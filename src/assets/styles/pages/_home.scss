@@ -125,11 +125,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 45px 0;
+    padding: 0 0 45px 0;
 
     @media (min-width: $media_ipad) {
       flex-direction: row;
       flex-wrap: nowrap;
+      padding: 45px 0;
     }
   }
 
@@ -159,23 +160,48 @@
 
   &_content {
     flex-basis: 35%;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+    @media (min-width: $media_ipad) {
+      width: 100%;
+      text-align: left;
+    }
 
     .button {
       margin-bottom: 25px;
     }
 
     &-right {
+      text-align: center;
+
+      @media (min-width: $media_ipad) {
+        text-align: right;
+      }
 
       .belter_subtitle {
-        text-align: right;
+        text-align: center;
+
+        @media (min-width: $media_ipad) {
+          text-align: right;
+        }
       }
 
       .belter_text {
         margin-left: auto;
+        margin-bottom: 20px;
+
+        @media (min-width: $media_ipad) {
+          margin-left: auto;
+        }
       }
 
       .belter_link {
-        float: right;
+        
+        @media (min-width: $media_ipad) {
+          float: right;
+        }
       }
     }
   }
@@ -192,10 +218,13 @@
   }
 
   &_text {
-    width: 90%;
     margin-bottom: 40px;
     font: 16px 'Gotham Book';
     color: $cor_brand;
+
+    @media (min-width: $media_ipad) {
+      width: 90%;
+    }
   }
 
   &_link {

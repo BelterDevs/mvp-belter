@@ -30,7 +30,7 @@
 
         <ul class="donations-value_values">
           <li class="donations-value_values-item" *ngFor="let plan of this.resolvedPlans(true);"
-            (click)="selectDonationValue({value:plan.amount})"
+            (click)="selectDonationValue({value:plan.amount / 100 + ',00'})"
             [ngClass]="{'donations-value_values-item--is-select': dataService.getData('donation')['value'] === plan.amount}">
             <span class="donations-value_values-value">{{ plan.amount / 100 }}</span>
             <span class="donations-value_values-text">{{ plan.name }}</span>
@@ -47,7 +47,9 @@
           <span class="donations-value_final-coin">R$</span>
           <input type="tel" class="donations-value_final-input" id="custom-donation-input"
             (input)="selectCustomDonationValue({value: element.value})"
-            [value]="dataService.getData('donation')['value']" #element />
+            [value]="dataService.getData('donation')['value']" [(ngModel)]="valor"
+            currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'center' }" 
+            maxlength="9"/>
           <span class="donations-value_final-text">/ mês</span>
         </div>
 
@@ -117,6 +119,10 @@
             <span class="donations-value_form-error" *ngIf="f.ownerCPF.errors.cpfNotValid">CPF inválido.</span>
             <span class="donations-value_form-error" *ngIf="f.ownerCPF.errors['Mask error']">CPF incompleto</span>
           </div>
+        </div>
+
+        <div class="donations-value_form-group">
+          <p class="donations-value_form-group-text">Obrigado por fazer a diferença e ajudar o próximo</p>
         </div>
 
         <button class="button button_brand" type="button" role="button" (click)="openModalConfirmation()">Prosseguir

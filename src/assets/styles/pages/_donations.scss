@@ -258,13 +258,19 @@
         flex-basis: 100%;
 
         @media (min-width: $media_ipad_pro) {
-          flex-basis: 41%;
+          flex-basis: 41.3%;
           margin-right: 70px;
         }
 
         @media (min-width: $media_desktop) {
-          flex-basis: 43%;
+          flex-basis: 43.6%;
         }
+      }
+
+      &-text {
+        padding-bottom: 15px;
+        font: 18px 'Gotham Bold';
+        color: $cor_brand;
       }
     }
 

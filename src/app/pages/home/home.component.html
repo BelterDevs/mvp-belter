@@ -2,14 +2,14 @@
 
 <div class="banner">
   <div class="container">
-    <h1 class="banner_title">A Belter ajuda diversas organizações para captar recursos financeiros e materiais.</h1>
-    <p class="banner_text">Você gostaria de ser um Voluntário Digital?</p>
+    <h1 class="banner_title">A Belter ajuda organizações filantrópicas na captação de recursos financeiros.</h1>
+    <p class="banner_text">Você gostaria de ser um Doador ou um Voluntário Digital?</p>
     <ul class="banner_buttons">
       <li class="banner_buttons-item">
         <button class="button button_white" [routerLink]="['/donation-ong']">Quero doar</button>
       </li>
       <li class="banner_buttons-item">
-        <button class="button button_white">Seja um Voluntário Digital</button>
+        <button class="button button_white" [routerLink]="['/donation-ong']">Seja um Voluntário Digital</button>
       </li>
     </ul>
   </div>
@@ -23,16 +23,16 @@
       <img src="./assets/images/home/img-register.png" alt="" class="belter_image belter_image-left" />
       <div class="belter_content">
         <h3 class="belter_subtitle">Cadastre-se</h3>
-        <p class="belter_text">Para ajudar e fazer a diferença no mundo, basta clicar no botão abaixo e se cadastrar. É muito rapidinho!</p>
-        <button class="button button_sm button_brand">Cadastre-se</button>
+        <p class="belter_text">Faça a diferença no mundo, clique no botão abaixo, escolha a sua ONG e ajude a mudar vidas.</p>
+        <button class="button button_sm button_brand" [routerLink]="['/donation-ong']">Doe agora</button>
       </div>
     </div>
 
     <div class="belter_item">
       <div class="belter_content belter_content-right">
-        <h3 class="belter_subtitle">Ajudamos as ONGs</h3>
-        <p class="belter_text">A Belter é parceira de toda as Instituições que necessitam de recursos para conseguir manter o excelente trabalho e também contribuir para mais pessoas, animais e  meio ambiente.</p>
-        <a href="" class="belter_link">Visitar a página de ONG's <i class="fas fa-angle-right"></i></a>
+        <h3 class="belter_subtitle">Ajudamos as ONG's</h3>
+        <p class="belter_text">A Belter é parceira de todas as Instituições que necessitam de recursos para manterem o excelente trabalho nas causas de animais, saúde, criança e educação.</p>
+        <a href="" class="belter_link" [routerLink]="['/ong-list']">Visitar a página de ONG's <i class="fas fa-angle-right"></i></a>
       </div>
       <img src="./assets/images/home/img-hands.png" alt="" class="belter_image belter_image-right" />
     </div>
@@ -41,7 +41,7 @@
       <img src="./assets/images/home/img-digital-volunteer.png" alt="" class="belter_image belter_image-left" />
       <div class="belter_content">
         <h3 class="belter_subtitle">Voluntários Digitais</h3>
-        <p class="belter_text">O Voluntariado é uma das atitudes mais nobre do ser Humano. A Belter acredita que o Voluntariado Digital é a chave da captação de recursos para as ONGs nessa Era digital.</p>
+        <p class="belter_text">O Voluntariado é uma das atitudes mais nobre do ser Humano. A Belter acredita que o Voluntariado Digital é a chave da captação de recursos para as ONG's nessa Era digital.</p>
         <button class="button button_sm button_brand">Quero ser um Voluntário Digital</button>
         <a href="" class="belter_link">Visitar a página de Voluntários Digitais <i class="fas fa-angle-right"></i></a>
         <a href="" class="belter_link">O que é um Voluntário Digital? <i class="fas fa-angle-right"></i></a>

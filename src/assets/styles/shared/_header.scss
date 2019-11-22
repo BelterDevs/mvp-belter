@@ -6,7 +6,6 @@
   
   @media (min-width: $media_ipad_pro) {
     z-index: 2;
-
   }
 
   .container {
@@ -31,8 +30,8 @@
 
     &-text {
       margin-left: 9px;
-      font: 15px 'Gotham Book';
-      color: #9F9F9F;
+      font: 20px 'Gotham Medium';
+      color: $cor_logo;
     }
   }
 
@@ -201,7 +200,8 @@
         font-size: 18px;
       }
 
-      &:hover {
+      &:hover,
+      &.active {
         color: $cor_brand;
       }
     }
