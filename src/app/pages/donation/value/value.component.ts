@@ -12,6 +12,8 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ValueComponent implements OnInit {
 
+  valor: any;
+
   constructor(
     dataService: DataService,
     route: ActivatedRoute,

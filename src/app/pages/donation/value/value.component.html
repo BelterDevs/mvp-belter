@@ -47,7 +47,7 @@
           <span class="donations-value_final-coin">R$</span>
           <input type="tel" class="donations-value_final-input" id="custom-donation-input"
             (input)="selectCustomDonationValue({value: element.value})"
-            [value]="dataService.getData('donation')['value']" [(ngModel)]="valor"
+            [value]="dataService.getData('donation')['value']" #element [(ngModel)]="valor"
             currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'center' }" 
             maxlength="9"/>
           <span class="donations-value_final-text">/ mês</span>
