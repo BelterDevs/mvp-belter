@@ -160,6 +160,10 @@ export class DataService {
   }
 
   createDonationDataFactory() {
+
+    var newString = (this.data.donation.value).toString();
+    var newTotal = newString.replace(',', '');
+    
     return {
       creditCard: {
         card_number: this.data.donation.cardNumber.replace(' ', ''),
@@ -173,7 +177,7 @@ export class DataService {
         document_number: this.data.donation.ownerCPF
       },
       plan_id: this.data.donation.planId,
-      amount: this.data.donation.value,
+      amount: newTotal,
       split_rules: [
         {
           recipient_id: this.data.ong.recipient.id
@@ -183,6 +187,7 @@ export class DataService {
   }
 
   postDonation() {
+    console.log(this.createDonationDataFactory());
     const url = 'https://plataforma-belter-api.appspot.com/api/public/donate';
     return axios.post(url, this.createDonationDataFactory());
   }

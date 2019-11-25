@@ -26,18 +26,22 @@
 
       <div class="donations-value_form-item donations-value_form-item-left">
 
-        <div [ngClass]="{'donations-value_values-item--is-select': true}"></div>
+        <!-- <div [ngClass]="{'donations-value_values-item--is-select': true}"></div> -->
 
         <ul class="donations-value_values">
-          <li class="donations-value_values-item" *ngFor="let plan of this.resolvedPlans(true);"
+          <li class="donations-value_values-item" 
+            *ngFor="let plan of this.resolvedPlans(true);"
             (click)="selectDonationValue({value:plan.amount / 100 + ',00'})"
-            [ngClass]="{'donations-value_values-item--is-select': dataService.getData('donation')['value'] === plan.amount}">
+            [ngClass]="{'donations-value_values-item--is-select': dataService.getData('donation')['value'] === plan.amount/100 + ',00'}"
+          >
             <span class="donations-value_values-value">{{ plan.amount / 100 }}</span>
             <span class="donations-value_values-text">{{ plan.name }}</span>
           </li>
 
-          <li class="donations-value_values-item" (click)="selectCustomDonationValue({value:100})"
-            [ngClass]="{'donations-value_values-item--is-select': isCustomDonation()}">
+          <li class="donations-value_values-item"
+            (click)="selectCustomDonationValue({value: 1 + ',00'})"
+            [ngClass]="{'donations-value_values-item--is-select': isCustomDonation()}"
+          >
             <span class="donations-value_values-value donations-value_values-value-other"></span>
             <span class="donations-value_values-text">Outro valor</span>
           </li>
@@ -88,7 +92,7 @@
             (input)="setDonationExpiration({expiration: expiration.value})" #expiration />
           <div *ngIf="submitted && f.expiration.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.expiration.errors.required">Necessário preencher</span>
-            <span class="donations-value_form-error" *ngIf="f.expiration.errors.expiration">Validade expirada</span>
+            <!-- <span class="donations-value_form-error" *ngIf="f.expiration.errors.expiration">Validade expirada</span> -->
           </div>
         </div>
 

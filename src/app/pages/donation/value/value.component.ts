@@ -137,6 +137,8 @@ export class ValueComponent implements OnInit {
       ownerName: ['', Validators.compose([Validators.required, Validators.minLength(2)])]
     };
     this.registerForm = this.formBuilder.group(rules);
+
+    this.fakeData();
   }
 
   onSubmit(evt?: any) {
