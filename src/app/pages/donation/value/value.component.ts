@@ -81,6 +81,8 @@ export class ValueComponent implements OnInit {
 
     this.disableTextbox = false;
 
+    (document.getElementById('custom-donation-input') as HTMLInputElement).value = option.value;
+
     this.dataService.setDonation(option);
     this.selectPlanByValue(option);
 
