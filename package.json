@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.13",
     "axios": "^0.19.0",
     "ng2-currency-mask": "^5.3.1",
+    "ng2-validation": "^4.2.0",
     "ngx-credit-cards": "^1.0.9",
     "ngx-mask": "^8.1.6",
     "rxjs": "~6.4.0",

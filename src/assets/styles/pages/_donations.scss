@@ -382,11 +382,22 @@
     }
 
     &-input {
-      width: 120px;
+      width: 80px;
       margin-right: 8px;
       font: 16px 'Gotham Medium';
-      color: #9F9F9F;
+      color: #000;
       text-align: center;
+
+      &:disabled {
+        background-color: rgba(0, 0, 0, .3);
+        color: #fff;
+        border: none;
+        cursor: not-allowed;
+
+        &::placeholder {
+          color: #fff;
+        }
+      }
     }
 
     &-text {

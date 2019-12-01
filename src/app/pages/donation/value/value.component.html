@@ -29,18 +29,18 @@
         <!-- <div [ngClass]="{'donations-value_values-item--is-select': true}"></div> -->
 
         <ul class="donations-value_values">
-          <li class="donations-value_values-item" 
-            *ngFor="let plan of this.resolvedPlans(true);"
-            (click)="selectDonationValue({value:plan.amount / 100 + ',00'})"
-            [ngClass]="{'donations-value_values-item--is-select': dataService.getData('donation')['value'] === plan.amount/100 + ',00'}"
-          >
-            <span class="donations-value_values-value">{{ plan.amount / 100 }}</span>
-            <span class="donations-value_values-text">{{ plan.name }}</span>
+          <li class="donations-value_values-item" *ngFor="let plan of this.resolvedPlans(true);"
+              (click)="selectDonationValue({value:plan.amount / 100})"
+              [ngClass]="{'donations-value_values-item--is-select': dataService.getData('donation')['value'] === plan.amount/100}">
+              <span class="donations-value_values-value">{{ plan.amount / 100 }}</span>
+              <span class="donations-value_values-text">{{ plan.name }}</span>
+              <!-- <span>{{ plan.id }}</span>
+              <span>{{ plan.amount }}</span> -->
           </li>
 
           <li class="donations-value_values-item"
-            (click)="selectCustomDonationValue({value: 1 + ',00'})"
-            [ngClass]="{'donations-value_values-item--is-select': isCustomDonation()}"
+              (click)="selectCustomDonationValue({value: 6})"
+              [ngClass]="{'donations-value_values-item--is-select': isCustomDonation()}"
           >
             <span class="donations-value_values-value donations-value_values-value-other"></span>
             <span class="donations-value_values-text">Outro valor</span>
@@ -49,36 +49,52 @@
 
         <div class="donations-value_final">
           <span class="donations-value_final-coin">R$</span>
-          <input type="tel" class="donations-value_final-input" id="custom-donation-input"
-            (input)="selectCustomDonationValue({value: element.value})"
-            [value]="dataService.getData('donation')['value']" #element [(ngModel)]="valor"
-            currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'center' }" 
-            maxlength="9"/>
-          <span class="donations-value_final-text">/ mês</span>
+          <input type="text" class="donations-value_final-input" id="custom-donation-input"
+                 ngModel
+                 required
+                 #gte="ngModel"
+                 name="gte"
+                 gte="5" 
+                 #element
+                 maxlength="6"
+                 (ngModelChange)="selectCustomDonationValue({value: gte.value})"
+                 disabled
+                 [disabled]="disableTextbox"
+          />
+          <span class="donations-value_final-text">,00 / mês</span>
+          <!-- currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'center' }"  -->
         </div>
+        <p id="minimo" class="error-value" *ngIf="gte?.errors?.gte">O valor mínimo para doação é de R$ 5,00.</p>
+        <!-- <p
+          id="notblank" class="error-value"
+          *ngIf="requried?.errors?.required"
+          [hidden]="isHidden"
+        >Por gentileza preencha um valor.</p> -->
 
       </div>
 
-      <form class="donations-value_form-item donations-value_form-item-right" [formGroup]="registerForm"
-        (ngSubmit)="onSubmit($event)" id="donation-form" action="http://localhost:8000/test.php">
-        
-        
+      <form class="donations-value_form-item donations-value_form-item-right" id="donation-form"
+            [formGroup]="registerForm" (ngSubmit)="onSubmit($event)" action="http://localhost:8000/test.php"
+            #formcontrol="ngForm">
+
+
         <input type="hidden" formControlName="value" value="{{ this.dataService.getData('donation')['value'] }}">
 
         <div class="donations-value_form-group">
           <input type="email" name="" id="" class="donations-value_form-input" placeholder="Seu e-mail"
-            formControlName="ownerEmail" [ngClass]="{'invalid':submitted && f.ownerEmail.errors}" #ownerEmail
-            (input)="setDonationEmail({ownerEmail: ownerEmail.value})">
+                 formControlName="ownerEmail" [ngClass]="{'invalid':submitted && f.ownerEmail.errors}" #ownerEmail
+                 (input)="setDonationEmail({ownerEmail: ownerEmail.value})">
           <div *ngIf="submitted && f.ownerEmail.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.ownerEmail.errors.required">Necessário preencher</span>
-            <span class="donations-value_form-error" *ngIf="f.ownerEmail.errors.email">Email inválido</span>
+            <span class="donations-value_form-error" *ngIf="f.ownerEmail.errors.email">E-mail inválido</span>
           </div>
         </div>
 
         <div class="donations-value_form-group" [ngClass]="{'invalid':submitted && f.cardNumber.errors}">
           <input type="tel" class="donations-value_form-input donations-value_form-input-cc"
-            placeholder="Número do Cartão" formControlName="cardNumber" [specialCharacters]="[ ' ']"
-            mask="0000 0000 0000 0000" (input)="setDonationCardNumber({ cardNumber: cardNumber.value})" #cardNumber />
+                 placeholder="Número do Cartão" formControlName="cardNumber" [specialCharacters]="[ ' ']"
+                 mask="0000 0000 0000 0000" (input)="setDonationCardNumber({ cardNumber: cardNumber.value})"
+                 #cardNumber/>
           <div *ngIf="submitted && f.cardNumber.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.cardNumber.errors.required">Necessário preencher</span>
             <span class="donations-value_form-error" *ngIf="f.cardNumber.errors.creditcard">Cartão inválido</span>
@@ -88,8 +104,8 @@
 
         <div class="donations-value_form-group donations-value_form-group-half">
           <input type="tel" class="donations-value_form-input" placeholder="Validade" value="" mask="00/00"
-            formControlName="expiration" autocomplete="cc-exp" id="cc-exp"
-            (input)="setDonationExpiration({expiration: expiration.value})" #expiration />
+                 formControlName="expiration" autocomplete="cc-exp" id="cc-exp"
+                 (input)="setDonationExpiration({expiration: expiration.value})" #expiration/>
           <div *ngIf="submitted && f.expiration.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.expiration.errors.required">Necessário preencher</span>
             <!-- <span class="donations-value_form-error" *ngIf="f.expiration.errors.expiration">Validade expirada</span> -->
@@ -98,17 +114,17 @@
 
         <div class="donations-value_form-group donations-value_form-group-half no-margin-right">
           <input type="tel" class="donations-value_form-input donations-value_form-input-cvv" placeholder="CVV"
-            formControlName="cvv" minlength="3" maxlength="4" (input)="setDonationCVV({ cvv: cvv.value})" #cvv />
+                 formControlName="cvv" minlength="3" maxlength="3" (input)="setDonationCVV({ cvv: cvv.value})" #cvv/>
           <div *ngIf="submitted && f.cvv.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.cvv.errors.required">Necessário preencher</span>
-            <span class="donations-value_form-error" *ngIf="f.cvv.errors.minlength">Deve ter 3 ou 4 dígitos</span>
-            <span class="donations-value_form-error" *ngIf="f.cvv.errors.pattern">Deve ter 3 ou 4 números</span>
+            <span class="donations-value_form-error" *ngIf="f.cvv.errors.minlength">Deve ter 3 números</span>
+            <!-- <span class="donations-value_form-error" *ngIf="f.cvv.errors.pattern">Deve ter 3 ou 4 números</span> -->
           </div>
         </div>
 
         <div class="donations-value_form-group">
           <input type="text" class="donations-value_form-input" placeholder="Nome do titular"
-            formControlName="ownerName" (input)="setDonationOwnerName({ ownerName: ownerName.value})" #ownerName />
+                 formControlName="ownerName" (input)="setDonationOwnerName({ ownerName: ownerName.value})" #ownerName/>
           <div *ngIf="submitted && f.ownerName.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.ownerName.errors.required">Necessário preencher</span>
           </div>
@@ -116,8 +132,8 @@
 
         <div class="donations-value_form-group">
           <input type="tel" class="donations-value_form-input" placeholder="CPF" formControlName="ownerCPF"
-            [specialCharacters]="[ '.' ,'-' ]" mask="000.000.000-00" #cpf
-            (input)="setDonationOwnerCPF({ownerCPF: cpf.value})">
+                 [specialCharacters]="[ '.' ,'-' ]" mask="000.000.000-00" #cpf
+                 (input)="setDonationOwnerCPF({ownerCPF: cpf.value})">
           <div *ngIf="submitted && f.ownerCPF.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.ownerCPF.errors.required">Necessário preencher</span>
             <span class="donations-value_form-error" *ngIf="f.ownerCPF.errors.cpfNotValid">CPF inválido.</span>
@@ -129,18 +145,19 @@
           <p class="donations-value_form-group-text">Obrigado por fazer a diferença e ajudar o próximo</p>
         </div>
 
-        <button class="button button_brand" type="button" role="button" (click)="openModalConfirmation()">Prosseguir
+        <button class="button button_brand" type="button" role="button" (click)="openModalConfirmation()">
+          Prosseguir
         </button>
 
       </form>
 
     </div>
     <app-modal-confirmation #modalConfirmationComponent (submitFormActionEvent)="onSubmit()"
-      (closeModalEvent)="openModalConfirmation($event);" [isOpen]="this.modalIsOpen">
+                            (closeModalEvent)="openModalConfirmation($event);" [isOpen]="this.modalIsOpen">
     </app-modal-confirmation>
 
     <app-modal-error #modalErrorComponent (submitFormActionEvent)="onSubmit()"
-      (closeModalEvent)="openModalError($event);" [isOpen]="this.showModalError" [code]="500">
+                     (closeModalEvent)="openModalError($event);" [isOpen]="this.showModalError" [code]="500">
     </app-modal-error>
   </div>
 </div>

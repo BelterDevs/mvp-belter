@@ -1,9 +1,11 @@
 // tslint:disable:no-shadowed-variable
 import axios from 'axios';
-import { slugify } from '../utils/helpers';
+import {slugify} from '../utils/helpers';
+import {objectKeys} from "codelyzer/util/objectKeys";
 
 export class DataService {
-  constructor() {}
+  constructor() {
+  }
 
   data = {
     donation: {
@@ -61,12 +63,12 @@ export class DataService {
     plans: [
       {
         amount: 3000,
-        id: '439745',
+        id: '443364',
         name: 'R$ 30,00'
       },
       {
         amount: 5000,
-        id: '439745',
+        id: '443364',
         name: 'R$ 50,00'
       }
     ]
@@ -96,7 +98,7 @@ export class DataService {
     }
 
     return [
-      ...this.data.plans.filter(plan => plan.id !== '439745'),
+      ...this.data.plans.filter(plan => plan.id !== '443364'),
       ...this.mock.plans
     ].sort((a, b) => (a.amount > b.amount) ? 1 : -1);
   }
@@ -129,8 +131,6 @@ export class DataService {
   }
 
   setDonation(value) {
-    // this.data.donation.value = value;
-
     const objKey = Object.keys(value)[0];
     const objValue = value[objKey];
 
@@ -138,7 +138,7 @@ export class DataService {
       this.data.donation[objKey] = objValue;
     }
 
-    // console.log(objKey, objValue, this.data.donation.hasOwnProperty(objKey), this.data.donation[objKey]);
+    return objValue;
   }
 
   setCard(key, value) {
@@ -161,9 +161,10 @@ export class DataService {
 
   createDonationDataFactory() {
 
-    var newString = (this.data.donation.value).toString();
-    var newTotal = newString.replace(',', '');
-    
+    let totalInput = (document.getElementById('custom-donation-input') as HTMLInputElement).value;
+    // let newTotal = totalInput.replace(',', '').replace('.', '');
+    let newTotal = totalInput + '00';
+
     return {
       creditCard: {
         card_number: this.data.donation.cardNumber.replace(' ', ''),

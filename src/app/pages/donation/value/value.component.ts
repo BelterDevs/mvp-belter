@@ -1,10 +1,11 @@
-import {ActivatedRoute, Router} from '@angular/router';
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CreditCardValidators} from 'ngx-validators';
-import {GenericValidator} from '../../../utils/GenericValidator';
-import {slugify} from '../../../utils/helpers';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { CreditCardValidators } from 'ngx-validators';
+import { GenericValidator } from '../../../utils/GenericValidator';
+import { slugify } from '../../../utils/helpers';
 import { DataService } from 'src/app/services/data.service';
+import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector: 'app-value',
@@ -13,6 +14,8 @@ import { DataService } from 'src/app/services/data.service';
 export class ValueComponent implements OnInit {
 
   valor: any;
+  form: FormGroup;
+  disableTextbox = true;
 
   constructor(
     dataService: DataService,
@@ -23,6 +26,9 @@ export class ValueComponent implements OnInit {
     this.dataService = dataService;
     this.route = route;
     this.router = router;
+    this.form = new FormGroup({
+      field: new FormControl('', CustomValidators.gt(10))
+    });
   }
 
   get f() {
@@ -36,6 +42,8 @@ export class ValueComponent implements OnInit {
   submitted = false;
   modalIsOpen = false;
   showModalError = false;
+
+  isHidden: boolean = false;
 
   openModalConfirmation(open = true) {
     this.submitted = true;
@@ -51,6 +59,9 @@ export class ValueComponent implements OnInit {
   }
 
   selectDonationValue(option) {
+
+    this.disableTextbox = true;
+
     (document.getElementById('custom-donation-input') as HTMLInputElement).value = option.value;
 
     this.dataService.setDonation(option);
@@ -62,15 +73,20 @@ export class ValueComponent implements OnInit {
 
   selectPlanByValue(value) {
     const plans = this.dataService.resolvePlans(true).filter(plan => plan.amount === value);
-    const selected = plans.length === 0 ? '439745' : plans[0].id;
-    this.dataService.setDonation({planId: selected});
+    const selected = plans.length === 0 ? '443364' : plans[0].id;
+    this.dataService.setDonation({ planId: selected });
   }
 
-  selectCustomDonationValue(value) {
-    this.dataService.setDonation(value);
-    this.selectPlanByValue(value);
+  selectCustomDonationValue(option) {
 
-    return value;
+    this.disableTextbox = false;
+
+    this.dataService.setDonation(option);
+    this.selectPlanByValue(option);
+
+    return option;
+
+    // this.isHidden = true;
   }
 
   isCustomDonation() {
@@ -138,7 +154,7 @@ export class ValueComponent implements OnInit {
     };
     this.registerForm = this.formBuilder.group(rules);
 
-    this.fakeData();
+    // this.fakeData();
   }
 
   onSubmit(evt?: any) {
@@ -174,7 +190,7 @@ export class ValueComponent implements OnInit {
   fakeData() {
     // tslint:disable-next-line:one-variable-per-declaration
     const
-      value = 500,
+      value = '5,00',
       cardNumber = '5211321553377981',
       expiration = '0520',
       cvv = '412',
@@ -190,13 +206,13 @@ export class ValueComponent implements OnInit {
     this.registerForm.controls.ownerName.setValue(ownerName);
     this.registerForm.controls.ownerCPF.setValue(ownerCPF);
 
-    this.dataService.setDonation({value});
-    this.dataService.setDonation({cardNumber});
-    this.dataService.setDonation({expiration});
-    this.dataService.setDonation({ownerEmail});
-    this.dataService.setDonation({ownerName});
-    this.dataService.setDonation({ownerCPF});
-    this.dataService.setDonation({cvv});
+    this.dataService.setDonation({ value });
+    this.dataService.setDonation({ cardNumber });
+    this.dataService.setDonation({ expiration });
+    this.dataService.setDonation({ ownerEmail });
+    this.dataService.setDonation({ ownerName });
+    this.dataService.setDonation({ ownerCPF });
+    this.dataService.setDonation({ cvv });
   }
 
   resolvedPlans(needResolver = true) {

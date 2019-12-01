@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { AppRoutes } from './app.routes';
 
@@ -50,6 +51,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     }),
     CurrencyMaskModule,
     FormsModule,
+    CustomFormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
