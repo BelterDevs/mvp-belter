@@ -15,7 +15,8 @@ export class ValueComponent implements OnInit {
 
   valor: any;
   form: FormGroup;
-  disableTextbox = true;
+  disableTextbox = false;
+  initialValue: number = 6;
 
   constructor(
     dataService: DataService,
@@ -192,7 +193,7 @@ export class ValueComponent implements OnInit {
   fakeData() {
     // tslint:disable-next-line:one-variable-per-declaration
     const
-      value = '5,00',
+      value = '6',
       cardNumber = '5211321553377981',
       expiration = '0520',
       cvv = '412',

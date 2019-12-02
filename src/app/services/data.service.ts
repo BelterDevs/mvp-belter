@@ -188,7 +188,7 @@ export class DataService {
   }
 
   postDonation() {
-    console.log(this.createDonationDataFactory());
+    //console.log(this.createDonationDataFactory());
     const url = 'https://plataforma-belter-api.appspot.com/api/public/donate';
     return axios.post(url, this.createDonationDataFactory());
   }
