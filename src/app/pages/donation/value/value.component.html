@@ -29,19 +29,17 @@
         <!-- <div [ngClass]="{'donations-value_values-item--is-select': true}"></div> -->
 
         <ul class="donations-value_values">
-          <li class="donations-value_values-item" 
-            *ngFor="let plan of this.resolvedPlans(true);"
-            (click)="selectDonationValue({value:plan.amount / 100 + ',00'})"
-            [ngClass]="{'donations-value_values-item--is-select': dataService.getData('donation')['value'] === plan.amount/100 + ',00'}"
-          >
+          <li class="donations-value_values-item" *ngFor="let plan of this.resolvedPlans(true);"
+            (click)="selectDonationValue({value:plan.amount / 100})"
+            [ngClass]="{'donations-value_values-item--is-select': dataService.getData('donation')['value'] === plan.amount/100}">
             <span class="donations-value_values-value">{{ plan.amount / 100 }}</span>
             <span class="donations-value_values-text">{{ plan.name }}</span>
+            <!-- <span>{{ plan.id }}</span>
+              <span>{{ plan.amount }}</span> -->
           </li>
 
-          <li class="donations-value_values-item"
-            (click)="selectCustomDonationValue({value: 1 + ',00'})"
-            [ngClass]="{'donations-value_values-item--is-select': isCustomDonation()}"
-          >
+          <li class="donations-value_values-item" (click)="selectCustomDonationValue({value: 6})"
+            [ngClass]="{'donations-value_values-item--is-select': isCustomDonation()}">
             <span class="donations-value_values-value donations-value_values-value-other"></span>
             <span class="donations-value_values-text">Outro valor</span>
           </li>
@@ -49,20 +47,21 @@
 
         <div class="donations-value_final">
           <span class="donations-value_final-coin">R$</span>
-          <input type="tel" class="donations-value_final-input" id="custom-donation-input"
-            (input)="selectCustomDonationValue({value: element.value})"
-            [value]="dataService.getData('donation')['value']" #element [(ngModel)]="valor"
-            currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'center' }" 
-            maxlength="9"/>
-          <span class="donations-value_final-text">/ mês</span>
+          <input type="text" class="donations-value_final-input" id="custom-donation-input" ngModel required
+            #gte="ngModel" name="gte" gte="5" #element maxlength="6"
+            (ngModelChange)="selectCustomDonationValue({value: gte.value})" [disabled]="disableTextbox"
+            [(ngModel)]="initialValue" />
+          <span class="donations-value_final-text">,00 / mês</span>
         </div>
+        <p id="minimo" class="error-value" *ngIf="gte?.errors?.gte">O valor mínimo para doação é de R$ 5,00.</p>
 
       </div>
 
-      <form class="donations-value_form-item donations-value_form-item-right" [formGroup]="registerForm"
-        (ngSubmit)="onSubmit($event)" id="donation-form" action="http://localhost:8000/test.php">
-        
-        
+      <form class="donations-value_form-item donations-value_form-item-right" id="donation-form"
+        [formGroup]="registerForm" (ngSubmit)="onSubmit($event)" action="http://localhost:8000/test.php"
+        #formcontrol="ngForm">
+
+
         <input type="hidden" formControlName="value" value="{{ this.dataService.getData('donation')['value'] }}">
 
         <div class="donations-value_form-group">
@@ -71,7 +70,7 @@
             (input)="setDonationEmail({ownerEmail: ownerEmail.value})">
           <div *ngIf="submitted && f.ownerEmail.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.ownerEmail.errors.required">Necessário preencher</span>
-            <span class="donations-value_form-error" *ngIf="f.ownerEmail.errors.email">Email inválido</span>
+            <span class="donations-value_form-error" *ngIf="f.ownerEmail.errors.email">E-mail inválido</span>
           </div>
         </div>
 
@@ -98,11 +97,11 @@
 
         <div class="donations-value_form-group donations-value_form-group-half no-margin-right">
           <input type="tel" class="donations-value_form-input donations-value_form-input-cvv" placeholder="CVV"
-            formControlName="cvv" minlength="3" maxlength="4" (input)="setDonationCVV({ cvv: cvv.value})" #cvv />
+            formControlName="cvv" minlength="3" maxlength="3" (input)="setDonationCVV({ cvv: cvv.value})" #cvv />
           <div *ngIf="submitted && f.cvv.errors" class="invalid-feedback">
             <span class="donations-value_form-error" *ngIf="f.cvv.errors.required">Necessário preencher</span>
-            <span class="donations-value_form-error" *ngIf="f.cvv.errors.minlength">Deve ter 3 ou 4 dígitos</span>
-            <span class="donations-value_form-error" *ngIf="f.cvv.errors.pattern">Deve ter 3 ou 4 números</span>
+            <span class="donations-value_form-error" *ngIf="f.cvv.errors.minlength">Deve ter 3 números</span>
+            <!-- <span class="donations-value_form-error" *ngIf="f.cvv.errors.pattern">Deve ter 3 ou 4 números</span> -->
           </div>
         </div>
 
@@ -129,7 +128,8 @@
           <p class="donations-value_form-group-text">Obrigado por fazer a diferença e ajudar o próximo</p>
         </div>
 
-        <button class="button button_brand" type="button" role="button" (click)="openModalConfirmation()">Prosseguir
+        <button class="button button_brand" type="button" role="button" (click)="openModalConfirmation()">
+          Prosseguir
         </button>
 
       </form>
