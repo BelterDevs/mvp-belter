@@ -157,7 +157,7 @@ export class ValueComponent implements OnInit {
     };
     this.registerForm = this.formBuilder.group(rules);
 
-    this.fakeData();
+    // this.fakeData();
   }
 
   onSubmit(evt?: any) {
