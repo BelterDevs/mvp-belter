@@ -61,16 +61,16 @@ export class DataService {
       },
     ],
     plans: [
-      {
-        amount: 3000,
-        id: '443364',
-        name: 'R$ 30,00'
-      },
-      {
-        amount: 5000,
-        id: '443364',
-        name: 'R$ 50,00'
-      }
+      // {
+      //   amount: 3000,
+      //   id: '443364',
+      //   name: 'R$ 30,00'
+      // },
+      // {
+      //   amount: 5000,
+      //   id: '443364',
+      //   name: 'R$ 50,00'
+      // }
     ]
   };
 
@@ -84,24 +84,25 @@ export class DataService {
     const url = 'https://plataforma-belter-api.appspot.com/api/plans'; // production
     axios.get(url).then(response => {
       this.data.plans = response.data;
-      const resolvedPlans = this.resolvePlans(true);
+      //const resolvedPlans = this.resolvePlans(true);
     });
   }
 
-  resolvePlans(needResolver = true) {
-    if (this.data.plans.length === 0) {
-      return [];
-    }
+  // resolvePlans(needResolver = true) {
+  //   console.log(this.data.plans);
+  //   if (this.data.plans.length === 0) {
+  //     return [];
+  //   }
 
-    if (!needResolver) {
-      return this.data.plans;
-    }
+  //   if (!needResolver) {
+  //     return this.data.plans;
+  //   }
 
-    return [
-      ...this.data.plans.filter(plan => plan.id !== '443364'),
-      ...this.mock.plans
-    ].sort((a, b) => (a.amount > b.amount) ? 1 : -1);
-  }
+  //   return [
+  //     ...this.data.plans.filter(plan => plan.id !== '0'),
+  //     ...this.mock.plans
+  //   ].sort((a, b) => (a.amount > b.amount) ? 1 : -1);
+  // }
 
   setSelectedOng(data) {
     this.data.ong = data;
@@ -188,7 +189,7 @@ export class DataService {
   }
 
   postDonation() {
-    //console.log(this.createDonationDataFactory());
+    console.log(this.createDonationDataFactory());
     const url = 'https://plataforma-belter-api.appspot.com/api/public/donate';
     return axios.post(url, this.createDonationDataFactory());
   }

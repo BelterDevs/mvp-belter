@@ -29,13 +29,13 @@
         <!-- <div [ngClass]="{'donations-value_values-item--is-select': true}"></div> -->
 
         <ul class="donations-value_values">
-          <li class="donations-value_values-item" *ngFor="let plan of this.resolvedPlans(true);"
+          <li class="donations-value_values-item" *ngFor="let plan of dataService.getData('plans');"
             (click)="selectDonationValue({value:plan.amount / 100})"
             [ngClass]="{'donations-value_values-item--is-select': dataService.getData('donation')['value'] === plan.amount/100}">
             <span class="donations-value_values-value">{{ plan.amount / 100 }}</span>
             <span class="donations-value_values-text">{{ plan.name }}</span>
             <!-- <span>{{ plan.id }}</span>
-              <span>{{ plan.amount }}</span> -->
+            <span>{{ plan.amount }}</span> -->
           </li>
 
           <li class="donations-value_values-item" (click)="selectCustomDonationValue({value: 6})"

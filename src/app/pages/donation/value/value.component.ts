@@ -73,8 +73,10 @@ export class ValueComponent implements OnInit {
   }
 
   selectPlanByValue(value) {
-    const plans = this.dataService.resolvePlans(true).filter(plan => plan.amount === value);
-    const selected = plans.length === 0 ? '443364' : plans[0].id;
+    const finalvalue = value + '00';
+    const numberValue = parseInt(finalvalue);
+    const plans = this.dataService.getData('plans').filter(p => p.amount === numberValue);
+    const selected = plans.length === 0 ? '0' : plans[0].id;
     this.dataService.setDonation({ planId: selected });
   }
 
@@ -88,8 +90,6 @@ export class ValueComponent implements OnInit {
     this.selectPlanByValue(option);
 
     return option;
-
-    // this.isHidden = true;
   }
 
   isCustomDonation() {
@@ -157,7 +157,7 @@ export class ValueComponent implements OnInit {
     };
     this.registerForm = this.formBuilder.group(rules);
 
-    // this.fakeData();
+    this.fakeData();
   }
 
   onSubmit(evt?: any) {
@@ -218,7 +218,7 @@ export class ValueComponent implements OnInit {
     this.dataService.setDonation({ cvv });
   }
 
-  resolvedPlans(needResolver = true) {
-    return this.dataService.resolvePlans(needResolver);
-  }
+  // resolvedPlans(needResolver = true) {
+  //   return this.dataService.resolvePlans(needResolver);
+  // }
 }
